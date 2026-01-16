@@ -1,0 +1,18 @@
+# Default configuration for transfer learning pipeline
+# Update data_root to point to your dataset with train/val/test subfolders.
+data_root: "./data"
+image_size: 224
+batch_size: 32
+num_workers: 2
+num_epochs_head: 3
+num_epochs_ft: 5
+lr_head: 0.0003
+lr_backbone: 0.00001
+weight_decay: 0.0001
+early_stop_patience: 5
+grad_accum_steps: 1
+trainable_layers_ft: 10
+baseline_epochs: 5
+output_dir: "./models"
+viz_dir: "./visualizations"
+model_type: "resnet50"  # options: resnet50, baseline
