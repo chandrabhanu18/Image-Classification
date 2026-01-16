@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  transfer-learning:
+    build: .
+    container_name: transfer_learning_app
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./visualizations:/app/visualizations
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python train.py --config config.yaml
+    
+  # Optional: Jupyter notebook service
+  jupyter:
+    build: .
+    container_name: transfer_learning_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser

@@ -1,0 +1,27 @@
+# Docker
+.dockerignore
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv
+venv/
+env/
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Large files
+*.pth
+*.png
+*.jpg
+data/
+visualizations/
+models/
+.ipynb_checkpoints/
