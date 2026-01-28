@@ -17,10 +17,14 @@ RUN mkdir -p models visualizations
 # Copy project files
 COPY . .
 
-# Install only essential packages (PyTorch will be downloaded from cache or pre-built wheels)
-RUN pip install --default-timeout=1000 \
-    torch==2.1.0 \
-    torchvision==0.16.0 \
+# Install CPU-only PyTorch to avoid CUDA downloads in slim image
+RUN pip install --default-timeout=1000 --no-cache-dir \
+    --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.1.0+cpu \
+    torchvision==0.16.0+cpu
+
+# Install remaining dependencies from PyPI
+RUN pip install --default-timeout=1000 --no-cache-dir \
     numpy==1.24.3 \
     pandas==2.0.3 \
     Pillow==10.0.0 \
